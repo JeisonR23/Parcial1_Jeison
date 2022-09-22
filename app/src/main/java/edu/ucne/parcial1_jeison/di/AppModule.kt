@@ -15,7 +15,7 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun ProvideTicketDb(@ApplicationContext context: Context): ExamenBd {
+    fun ProvideExamenBd(@ApplicationContext context: Context): ExamenBd {
         val DATABASE_NAME = "examenBd"
         return Room.databaseBuilder(
             context,
