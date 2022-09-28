@@ -1,29 +1,36 @@
 package edu.ucne.parcial1_jeison.ui.examen
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import edu.ucne.parcial1_jeison.data.repository.ArticuloRepository
 import edu.ucne.parcial1_jeison.model.Articulo
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class ExamenListUiState(
-   val examenList: List<Articulo> = emptyList()
+data class ArticuloListUiState(
+   val articuloList: List<Articulo> = emptyList()
 )
 
 @HiltViewModel
-class ExamenListViewModel @Inject constructor(
- //  val repository: ExamenRepository
+class ArticuloListViewModel @Inject constructor(
+   val repository: ArticuloRepository
 ) : ViewModel() {
- /*
-    var examen = repository.find()
-    var uiState by mutableStateOf(ExamenListUiState())
+
+    var articulo = repository.find()
+
+    var uiState by mutableStateOf(ArticuloListUiState())
         private set
 
     init {
         viewModelScope.launch {
-            repository.getList().collect() { list ->
-                uiState = uiState.copy(ExamenList = list)
+            repository.find().collect() { list ->
+                uiState = uiState.copy(articuloList = list)
             }
         }
-    }*/
+    }
 
 }
