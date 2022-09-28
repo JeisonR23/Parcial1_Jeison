@@ -11,7 +11,8 @@ import edu.ucne.parcial1_jeison.model.Articulo
     version = 2
 
 )
-abstract class ExamenBd: RoomDatabase() {
+abstract class ArticuloBd: RoomDatabase() {
     abstract  val articuloDao : ArticuloDao
 }
+
 
