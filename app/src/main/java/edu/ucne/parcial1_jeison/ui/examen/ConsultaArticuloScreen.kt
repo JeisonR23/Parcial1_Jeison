@@ -2,11 +2,15 @@ package edu.ucne.parcial1_jeison.ui.examen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,7 +22,7 @@ import edu.ucne.parcial1_jeison.navegation.Screen
 fun ConsultaArticuloScreen(
 
     navHostController: NavHostController,
-    viewModel : ArticuloViewModel = hiltViewModel()
+    viewModel : ArticuloListViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
@@ -41,26 +45,24 @@ fun ConsultaArticuloScreen(
                 .padding(it)
                 .padding(8.dp)
         ) {
-/*
-            val lista = viewModel.examen.collectAsState(initial = emptyList())
+
+            val lista = viewModel.articulo.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(lista.value) { examen ->
-                    RowExamen(examen = examen)
+                items(lista.value) { articulo ->
+                    RowArticulo(articulo = articulo)
                 }
 
             }
-
-
-       */ }
+       }
     }
 }
 
 @Composable
-fun RowExamen( examen : Articulo){
+fun RowArticulo( articulo : Articulo){
     Row() {
-        Text(text = examen.descripcion)
-        Text(text = examen.marca)
-        Text(text = examen.existencia.toString())
+        Text(text = articulo.descripcion)
+        Text(text = articulo.marca)
+        Text(text = articulo.existencia.toString())
     }
 }
