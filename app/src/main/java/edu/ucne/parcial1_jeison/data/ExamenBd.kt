@@ -7,7 +7,7 @@ import edu.ucne.parcial1_jeison.model.Articulo
 @Database(
     entities = [Articulo::class],
     exportSchema = false,
-    version = 1
+    version = 2
 
 )
 abstract class ExamenBd: RoomDatabase() {
