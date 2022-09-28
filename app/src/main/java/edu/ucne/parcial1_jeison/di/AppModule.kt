@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import edu.ucne.parcial1_jeison.data.ExamenBd
+import edu.ucne.parcial1_jeison.data.ArticuloDb
 import javax.inject.Singleton
 
 @Module
@@ -15,11 +15,11 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun ProvideExamenBd(@ApplicationContext context: Context): ExamenBd {
+    fun ProvideExamenBd(@ApplicationContext context: Context): ArticuloDb {
         val DATABASE_NAME = "examenBd"
         return Room.databaseBuilder(
             context,
-            ExamenBd::class.java,
+            ArticuloDb::class.java,
             DATABASE_NAME       )
             .fallbackToDestructiveMigration()
             .build()
