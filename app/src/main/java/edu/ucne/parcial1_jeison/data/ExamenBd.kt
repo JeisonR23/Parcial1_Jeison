@@ -2,6 +2,7 @@ package edu.ucne.parcial1_jeison.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import edu.ucne.parcial1_jeison.data.dao.ArticuloDao
 import edu.ucne.parcial1_jeison.model.Articulo
 
 @Database(
@@ -11,6 +12,6 @@ import edu.ucne.parcial1_jeison.model.Articulo
 
 )
 abstract class ExamenBd: RoomDatabase() {
-
+    abstract  val articuloDao : ArticuloDao
 }
 
