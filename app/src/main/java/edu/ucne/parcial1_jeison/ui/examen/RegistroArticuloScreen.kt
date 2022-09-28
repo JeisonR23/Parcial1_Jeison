@@ -18,29 +18,32 @@ fun RegistroArticuloScreen(
     Column(modifier = Modifier.fillMaxWidth()) {
 
         OutlinedTextField(
-            value = viewModel.descripcion
-            , onValueChange ={viewModel.descripcion = it},
-         label = { Text(text = "Descripcion")},
-        modifier = Modifier.fillMaxWidth())
+            value = viewModel.descripcion, onValueChange = { viewModel.descripcion = it },
+            label = { Text(text = "Descripcion") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = viewModel.marca, onValueChange = { viewModel.marca = it },
+            label = { Text(text = "Marca") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = viewModel.existencia, onValueChange = { viewModel.existencia = it },
+            label = { Text(text = "Existencia") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedButton(modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                viewModel.Guardar()
+                navHostController.navigateUp()
+            }) {
+            Text(text = "Guardame")
+        }
+
     }
-    OutlinedTextField(
-        value = viewModel.marca
-        , onValueChange ={viewModel.marca = it},
-        label = { Text(text = "Marca")},
-        modifier = Modifier.fillMaxWidth())
-
-    OutlinedTextField(
-        value = viewModel.existencia
-        , onValueChange ={viewModel.existencia = it},
-        label = { Text(text = "Existencia")},
-        modifier = Modifier.fillMaxWidth())
 
 
-
-    OutlinedButton(onClick = {
-        viewModel.Guardar()
-        navHostController.navigateUp()
-    }) {
-        Text(text = "Guardame")
-    }
 }
