@@ -1,5 +1,6 @@
 package edu.ucne.parcial1_jeison.ui.examen
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.OutlinedButton
@@ -7,6 +8,8 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
@@ -15,6 +18,31 @@ fun RegistroArticuloScreen(
     navHostController: NavHostController,
     viewModel: ArticuloViewModel = hiltViewModel()
 ) {
+
+    val context = LocalContext.current
+    fun validar() {
+        if (viewModel.descripcion.isEmpty()) {
+            Toast.makeText(context, "El campo Descripcion esta vacio", Toast.LENGTH_LONG).show()
+        } else
+            if (viewModel.marca.isEmpty()) {
+                Toast.makeText(context, "El campo Marca esta vacio", Toast.LENGTH_LONG).show()
+            } else
+                if (viewModel.existencia.isEmpty()) {
+                    Toast.makeText(context, "El campo Existencia esta vacio", Toast.LENGTH_LONG)
+                        .show()
+                } else
+                    if (viewModel.existencia.isDigitsOnly() && viewModel.existencia.toDouble() > 0) {
+                        viewModel.Guardar()
+                        navHostController.navigateUp()
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "El campo Existencia solo permite numeros mayores a 0",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+    }
+
     Column(modifier = Modifier.fillMaxWidth()) {
 
         OutlinedTextField(
@@ -34,16 +62,13 @@ fun RegistroArticuloScreen(
             label = { Text(text = "Existencia") },
             modifier = Modifier.fillMaxWidth()
         )
-
         OutlinedButton(modifier = Modifier.fillMaxWidth(),
             onClick = {
-                viewModel.Guardar()
-                navHostController.navigateUp()
+                validar()
             }) {
-            Text(text = "Guardame")
+            Text(text = "Guardar")
         }
-
     }
 
-
 }
+
