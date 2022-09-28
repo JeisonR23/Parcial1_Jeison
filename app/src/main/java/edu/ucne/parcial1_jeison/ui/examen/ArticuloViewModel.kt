@@ -5,7 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ExamenViewModel @Inject constructor(
+class ArticuloViewModel @Inject constructor(
    // val repository : ExamenRepository
 
 ) : ViewModel(){
@@ -14,6 +14,7 @@ class ExamenViewModel @Inject constructor(
   //  var salario by mutableStateOf("")
 
     fun Guardar(){
+
 
     }
 

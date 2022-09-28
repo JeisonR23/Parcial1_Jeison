@@ -15,10 +15,10 @@ import edu.ucne.parcial1_jeison.model.Articulo
 import edu.ucne.parcial1_jeison.navegation.Screen
 
 @Composable
-fun ConsultaExamenScreen(
+fun ConsultaArticuloScreen(
 
     navHostController: NavHostController,
-    viewModel : ExamenViewModel = hiltViewModel()
+    viewModel : ArticuloViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
