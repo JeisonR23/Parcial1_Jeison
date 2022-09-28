@@ -2,20 +2,16 @@ package edu.ucne.parcial1_jeison.ui.examen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import edu.ucne.parcial1_jeison.model.Examen
+import edu.ucne.parcial1_jeison.model.Articulo
 import edu.ucne.parcial1_jeison.navegation.Screen
 
 @Composable
@@ -61,10 +57,10 @@ fun ConsultaExamenScreen(
 }
 
 @Composable
-fun RowExamen( examen : Examen){
+fun RowExamen( examen : Articulo){
     Row() {
-        Text(text = examen.cadena1)
-        Text(text = examen.cadena2)
-        Text(text = examen.doble.toString())
+        Text(text = examen.descripcion)
+        Text(text = examen.marca)
+        Text(text = examen.existencia.toString())
     }
 }
