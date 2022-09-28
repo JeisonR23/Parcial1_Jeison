@@ -25,9 +25,10 @@ fun ConsultaArticuloScreen(
     viewModel : ArticuloListViewModel = hiltViewModel()
 ) {
     Scaffold(
+        modifier = Modifier.fillMaxWidth(),
         topBar = {
             TopAppBar(
-                title = { Text(text = "Consulta Examen") }
+                title = { Text(text = "Consulta de Articulos") }
             )
         },
         floatingActionButton = {
