@@ -3,15 +3,16 @@ package edu.ucne.parcial1_jeison.ui.examen
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import edu.ucne.parcial1_jeison.navegation.Screen
 
 @Composable
 fun RegistroArticuloScreen(
@@ -19,6 +20,14 @@ fun RegistroArticuloScreen(
     viewModel: ArticuloViewModel = hiltViewModel()
 ) {
 
+    Scaffold(
+        modifier = Modifier.fillMaxWidth(),
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Registro de Articulos") }
+            )
+        },
+    ) {
     val context = LocalContext.current
     fun validar() {
         if (viewModel.descripcion.isEmpty()) {
@@ -71,4 +80,4 @@ fun RegistroArticuloScreen(
     }
 
 }
-
+}
