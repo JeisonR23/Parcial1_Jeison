@@ -3,10 +3,10 @@ package edu.ucne.parcial1_jeison.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import edu.ucne.parcial1_jeison.data.dao.ArticuloDao
-import edu.ucne.parcial1_jeison.model.Articulo
+import edu.ucne.parcial1_jeison.model.ArticuloEntity
 
 @Database(
-    entities = [Articulo::class],
+    entities = [ArticuloEntity::class],
     exportSchema = false,
     version = 2
 

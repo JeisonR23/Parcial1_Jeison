@@ -1,24 +1,34 @@
 package edu.ucne.parcial1_jeison.data.repository
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import edu.ucne.parcial1_jeison.data.ArticuloDb
-import edu.ucne.parcial1_jeison.model.Articulo
-import kotlinx.coroutines.flow.Flow
+import edu.ucne.parcial1_jeison.data.remote.PrestamoApi
+import edu.ucne.parcial1_jeison.model.ArticuloEntity
 import javax.inject.Inject
 
 class ArticuloRepository @Inject constructor(
-    val articuloDb: ArticuloDb
+    val articuloDb: ArticuloDb,
+    val api: PrestamoApi
 ) {
 
-    suspend fun insert(articulo: Articulo) {
-        articuloDb.articuloDao.insert(articulo)
+    suspend fun getArticulos() {
+        val listaDto = api.getArticulos()
+        val listaEntity = listaDto.map { articuloDto ->
+            ArticuloEntity(
+                articuloId = articuloDto.articuloId,
+                descripcion = articuloDto.descripcion,
+                marca = articuloDto.marca,
+                existencia = articuloDto.existencia
+            )
+        }
+        articuloDb.articuloDao.insertList(listaEntity)
     }
 
-    suspend fun delete(articulo: Articulo) {
-        articuloDb.articuloDao.delete(articulo)
+    suspend fun insert(articuloEntity: ArticuloEntity) {
+        articuloDb.articuloDao.insert(articuloEntity)
+    }
+
+    suspend fun delete(articuloEntity: ArticuloEntity) {
+        articuloDb.articuloDao.delete(articuloEntity)
     }
 
     fun find() = articuloDb.articuloDao.find()

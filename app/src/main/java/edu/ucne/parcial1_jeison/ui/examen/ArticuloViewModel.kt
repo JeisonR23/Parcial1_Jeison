@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.ucne.parcial1_jeison.data.repository.ArticuloRepository
-import edu.ucne.parcial1_jeison.model.Articulo
+import edu.ucne.parcial1_jeison.model.ArticuloEntity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ class ArticuloViewModel @Inject constructor(
     fun Guardar() {
             viewModelScope.launch {
                 repository.insert(
-                    Articulo(
+                    ArticuloEntity(
                         descripcion = descripcion,
                         marca = marca,
                         existencia = existencia.toDouble()
